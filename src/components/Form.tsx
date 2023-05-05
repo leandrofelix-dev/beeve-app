@@ -1,36 +1,61 @@
-import { StatusBar } from 'expo-status-bar';
+
 import { Text, View, TextInput, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import styles from '../../src/styles/home';
 import React from 'react';
+import Toast from 'react-native-toast-message';
 
 export function Form() {
   function handleParticipantAdd() {
-    console.log('Clicou no add button');
+    Toast.show({
+      type: 'success',
+      text1: 'Registrado com Sucesso!',
+      text2: 'Uhul! Nos vemos lá! 👋',
+      position: 'top',
+      visibilityTime: 40000,
+      autoHide: true,
+    });
+
   }
   return(
-    <View style={styles.form}>
+    <View>
+      {/* e-mail */}
       <TextInput
-        style={styles.input}
+        placeholder="E-mail"
+        placeholderTextColor={'#fff'}
+        keyboardType='email-address'
+      />
+      {/* senha */}
+      <TextInput
+        placeholder="Senha"
+        placeholderTextColor={'#fff'}
+        keyboardType='visible-password'
+      />
+      {/* nome completo */}
+      <TextInput
         placeholder="Nome completo"
-        placeholderTextColor={styles.placeholder.color}
+        placeholderTextColor={'#fff'}
         keyboardType='default'
       />
-        <TouchableOpacity
-          style={styles.button}
-          activeOpacity={.7}
-          onPress={() => {handleParticipantAdd()}}
-        >
-        <Ionicons
-          name="calendar"
-          size={28}
-          color='#fff'
-        />
-        <Text style={styles.buttonText}>
-          MARCAR PRESENÇA
-        </Text>
-        </TouchableOpacity>
+      {/* data de nascimento */}
+      <TextInput
+        placeholder="Data de nascimento (dd/mm/aaaa)"
+        placeholderTextColor={'#fff'}
+      />
+
+      <TouchableOpacity
+        activeOpacity={.7}
+        onPress={() => {handleParticipantAdd()}}
+      >
+      <Ionicons
+        name="calendar"
+        size={28}
+        color='#fff'
+      />
+      <Text>
+        MARCAR PRESENÇA
+      </Text>
+      </TouchableOpacity>
     </View>
   )
 }
