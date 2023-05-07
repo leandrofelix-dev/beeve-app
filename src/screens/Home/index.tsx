@@ -2,7 +2,7 @@ import { Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-nativ
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 
-import { Card } from '../components/EventCard';
+import { Card } from '../../components/EventCard';
 
 
 export function Home() {

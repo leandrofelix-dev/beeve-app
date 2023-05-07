@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { Text, View, Image, ScrollView } from 'react-native';
 
-import { Form } from '../components/Form';
+import { Form } from '../../components/Form';
 
 export function Registration() {
 
   return(
     <View>
-      <ScrollView>
+      {/* <ScrollView>
         <View>
         <Image
           source={
@@ -35,7 +35,7 @@ export function Registration() {
         <Form />
       </View>
         </View>
-      </ScrollView>
+      </ScrollView> */}
       <StatusBar style="inverted" />
     </View>
   )

@@ -3,9 +3,12 @@ import { useFonts } from '@expo-google-fonts/inter';
 
 import Toast, { BaseToast, BaseToastProps, ErrorToast } from 'react-native-toast-message';
 import { Text, View } from 'react-native';
-import { Home } from './src/screens/Home';
+
+import { NavigationContainer } from '@react-navigation/native';
+
 import { useCallback } from 'react';
-import { Registration } from './src/screens/Registration';
+
+import Routes from './src/routes';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -69,10 +72,12 @@ export default function App() {
 
   return (
     <>
-      <Home />
-      <Toast config={toastConfig} />
-      <View onLayout={onLayoutRootView}>
-      </View>
+      <NavigationContainer>
+        <Routes />
+        <Toast config={toastConfig} />
+        <View onLayout={onLayoutRootView}></View>
+      </NavigationContainer>
+
     </>
   )
 }
