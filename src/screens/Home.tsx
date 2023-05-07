@@ -1,13 +1,15 @@
+import { Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
-import { Text, View, ScrollView, TextInput, TouchableOpacity } from 'react-native';
+
 import { Card } from '../components/EventCard';
+
 
 export function Home() {
   return (
     <View className='flex-1 px-4 bg-black'>
 
-      <View className='mt-20'>
+      <View className='mt-16'>
         <View className='flex-row justify-between'>
           <View className='flex-col justify-between mx-4'>
           <Text className='text-4xl font-extrabold text-white'>I'm Here</Text>
@@ -48,18 +50,21 @@ export function Home() {
           location='Cedro/CE'
           image_url='https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80'
         />
+
         <Card
           name='FliSol 2023.1'
           date='14 de abril de 2023'
           location='Cedro/CE'
           image_url='https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80'
         />
+
         <Card
           name='III Robotech'
           date='20 de junho de 2023'
           location='Várzea Alegre/CE'
           image_url='https://images.unsplash.com/photo-1558137623-ce933996c730?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=806&q=80'
         />
+
         <Card
           name='Dia da informática'
           date='20 de junho de 2023'
