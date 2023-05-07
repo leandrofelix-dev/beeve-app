@@ -4,7 +4,6 @@ import { Ionicons } from '@expo/vector-icons';
 
 import { Card } from '../../components/EventCard';
 
-
 export function Home() {
   return (
     <View className='flex-1 px-4 bg-black'>
