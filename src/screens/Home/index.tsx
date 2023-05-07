@@ -30,10 +30,11 @@ export function Home() {
             <TextInput
               placeholder="ex.: YA1S5C"
               placeholderTextColor={'#6B6B6B'}
-            className='px-4 py-3 my-2 text-xl font-bold text-white rounded-lg w-100 bg-gray300 w-80'
+            className='w-full px-4 py-3 my-2 mr-2 text-xl font-bold text-white rounded-lg bg-gray300'
             />
             <TouchableOpacity
-              activeOpacity={.7}>
+              activeOpacity={.7}
+              className='w-12 h-12 items-center justify-center absolute right-0'>
                 <Ionicons
                   name="add-circle-outline"
                   size={32}
