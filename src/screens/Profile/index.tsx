@@ -7,7 +7,6 @@ interface IProfileProps {
   name: string;
   events_qts: number;
   image_url: string;
-
 }
 
 export function Profile({name, events_qts, image_url}: IProfileProps) {

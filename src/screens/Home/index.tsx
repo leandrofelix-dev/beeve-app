@@ -7,7 +7,6 @@ import { Card } from '../../components/EventCard';
 export function Home() {
   return (
     <View className='flex-1 px-4 bg-black'>
-
       <View className='mt-16'>
         <View className='flex-row justify-between'>
           <View className='flex-col justify-between mx-4'>
@@ -15,13 +14,15 @@ export function Home() {
           <Text className='text-xl text-gray100'>Bem vindo(a) de volta!</Text>
         </View>
 
-        <View className='items-center justify-center -mt-4'>
-          <Ionicons
-            name="notifications"
-            size={28}
+          <View className='items-center justify-center -mt-4'>
+            <Ionicons
+              name="notifications"
+              size={28}
               color="#6B6B6B"
             />
-          <View className='w-2 h-2 -mr-3 rounded-full -mt-7 bg-purple'></View>
+
+            <View className='w-2 h-2 -mr-3 rounded-full -mt-7 bg-purple'>
+          </View>
         </View>
         </View>
         <View className='justify-center mt-6'>
