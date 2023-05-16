@@ -1,37 +1,44 @@
-import * as SplashScreen from 'expo-splash-screen';
-import { useFonts } from '@expo-google-fonts/inter';
+import { NavigationContainer } from '@react-navigation/native'
 
-import Toast, { BaseToast, BaseToastProps, ErrorToast } from 'react-native-toast-message';
-import { Text, View } from 'react-native';
+import * as SplashScreen from 'expo-splash-screen'
+import { useFonts } from '@expo-google-fonts/inter'
 
-import { NavigationContainer } from '@react-navigation/native';
+import Toast, {
+  BaseToast,
+  BaseToastProps,
+  ErrorToast,
+} from 'react-native-toast-message'
 
-import { useCallback } from 'react';
+import { Text, View } from 'react-native'
 
-import Routes from './src/routes';
+import { useCallback } from 'react'
 
-SplashScreen.preventAutoHideAsync();
+import Routes from './src/routes'
+
+SplashScreen.preventAutoHideAsync()
 
 const toastConfig = {
-  success: (props: JSX.IntrinsicAttributes & BaseToastProps ) => (
+  // eslint-disable-next-line no-undef
+  success: (props: JSX.IntrinsicAttributes & BaseToastProps) => (
     <BaseToast
       {...props}
       style={{ borderLeftColor: '#31cf67' }}
       contentContainerStyle={{
         height: 60,
         paddingHorizontal: 15,
-        backgroundColor: '#171717'
-       }}
+        backgroundColor: '#171717',
+      }}
       text1Style={{
         fontSize: 18,
         color: '#f5f5f5',
         fontWeight: '600',
       }}
       text2Style={{
-        fontSize: 14
+        fontSize: 14,
       }}
     />
   ),
+  // eslint-disable-next-line no-undef
   error: (props: JSX.IntrinsicAttributes & BaseToastProps) => (
     <ErrorToast
       {...props}
@@ -39,14 +46,14 @@ const toastConfig = {
         height: 60,
         paddingHorizontal: 15,
         backgroundColor: '#171717',
-       }}
+      }}
       text1Style={{
         fontSize: 18,
         color: '#f5f5f5',
         fontWeight: '600',
       }}
       text2Style={{
-        fontSize: 14
+        fontSize: 14,
       }}
     />
   ),
@@ -55,20 +62,24 @@ const toastConfig = {
       <Text>{text1}</Text>
       <Text>{props.uuid}</Text>
     </View>
-  )
-};
+  ),
+}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
     'Inter-Regular': require('./assets/fonts/Inter-Regular.ttf'),
-    'Inter-Bold': require('./assets/fonts/Inter-Bold.ttf')
-  });
+    'Inter-Bold': require('./assets/fonts/Inter-Bold.ttf'),
+  })
 
   const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) { await SplashScreen.hideAsync() }
-  }, [fontsLoaded]);
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync()
+    }
+  }, [fontsLoaded])
 
-  if (!fontsLoaded) { return null }
+  if (!fontsLoaded) {
+    return null
+  }
 
   return (
     <>
@@ -77,7 +88,6 @@ export default function App() {
         <Toast config={toastConfig} />
         <View onLayout={onLayoutRootView}></View>
       </NavigationContainer>
-
     </>
   )
 }

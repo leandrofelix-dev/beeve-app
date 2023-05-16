@@ -1,7 +1,5 @@
-import { Text, View} from 'react-native'
+import { Text } from 'react-native'
 
 export function Notification() {
-  return (
-    <Text>Notificações</Text>
-  )
+  return <Text>Notificações</Text>
 }

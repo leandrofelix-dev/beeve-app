@@ -1,9 +1,8 @@
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { Ionicons } from '@expo/vector-icons'
 
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-
-import React from 'react';
-import Toast from 'react-native-toast-message';
+import React from 'react'
+import Toast from 'react-native-toast-message'
 
 export function Form() {
   function handleParticipantAdd() {
@@ -14,28 +13,27 @@ export function Form() {
       position: 'top',
       visibilityTime: 40000,
       autoHide: true,
-    });
-
+    })
   }
-  return(
+  return (
     <View>
       {/* e-mail */}
       <TextInput
         placeholder="E-mail"
         placeholderTextColor={'#fff'}
-        keyboardType='email-address'
+        keyboardType="email-address"
       />
       {/* senha */}
       <TextInput
         placeholder="Senha"
         placeholderTextColor={'#fff'}
-        keyboardType='visible-password'
+        keyboardType="visible-password"
       />
       {/* nome completo */}
       <TextInput
         placeholder="Nome completo"
         placeholderTextColor={'#fff'}
-        keyboardType='default'
+        keyboardType="default"
       />
       {/* data de nascimento */}
       <TextInput
@@ -44,17 +42,13 @@ export function Form() {
       />
 
       <TouchableOpacity
-        activeOpacity={.7}
-        onPress={() => {handleParticipantAdd()}}
+        activeOpacity={0.7}
+        onPress={() => {
+          handleParticipantAdd()
+        }}
       >
-      <Ionicons
-        name="calendar"
-        size={28}
-        color='#fff'
-      />
-      <Text>
-        MARCAR PRESENÇA
-      </Text>
+        <Ionicons name="calendar" size={28} color="#fff" />
+        <Text>MARCAR PRESENÇA</Text>
       </TouchableOpacity>
     </View>
   )

@@ -1,7 +1,6 @@
 import React from 'react'
-
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Ionicons } from '@expo/vector-icons';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import { Ionicons } from '@expo/vector-icons'
 
 import { Home } from './screens/Home'
 import { Profile } from './screens/Profile'
@@ -12,10 +11,9 @@ export default function Routes() {
   return (
     <Tab.Navigator
       screenOptions={{
-          headerShown: false,
-          tabBarActiveTintColor: '#ffffff',
-          tabBarInactiveTintColor: '#6B6B6B',
-
+        headerShown: false,
+        tabBarActiveTintColor: '#ffffff',
+        tabBarInactiveTintColor: '#6B6B6B',
         tabBarStyle: {
           height: 60,
           paddingTop: 4,
@@ -23,23 +21,20 @@ export default function Routes() {
           backgroundColor: '#09090b',
           borderTopColor: 'transparent',
           paddingHorizontal: 16,
-          },
-
+        },
         tabBarLabelStyle: {
           fontSize: 12,
           fontWeight: 'bold',
-          },
-        }}>
+        },
+      }}
+    >
       <Tab.Screen
         name="Eventos"
         component={Home}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <Ionicons
-              name="albums"
-              size={size}
-              color={color} />
-          )
+            <Ionicons name="albums" size={size} color={color} />
+          ),
         }}
       />
       <Tab.Screen
@@ -47,11 +42,8 @@ export default function Routes() {
         component={Profile}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <Ionicons
-              name="person-circle-sharp"
-              size={size}
-              color={color} />
-          )
+            <Ionicons name="person-circle-sharp" size={size} color={color} />
+          ),
         }}
       />
     </Tab.Navigator>
