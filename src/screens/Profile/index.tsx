@@ -1,15 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import { Text, View, ScrollView } from 'react-native'
 import { Image } from 'expo-image'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Card } from '../../components/EventCard'
 
-interface IProfileProps {
-  name: string
-  events_qts: number
-  image_url: string
-}
-
-export function Profile({ name }: IProfileProps) {
+export function Profile() {
   return (
     <View className="flex-1 bg-black">
       <LinearGradient

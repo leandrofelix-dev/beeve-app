@@ -9,7 +9,11 @@ import {
 import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
 
+import React from 'react'
 import { Card } from '../../components/EventCard'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+
+const Tab = createBottomTabNavigator()
 
 export function Home() {
   return (
@@ -24,7 +28,9 @@ export function Home() {
           </View>
 
           <View className="-mt-4 items-center justify-center">
-            <Ionicons name="notifications" size={28} color="#6B6B6B" />
+            <TouchableOpacity>
+              <Ionicons name="notifications" size={28} color="#6B6B6B" />
+              </TouchableOpacity>
 
             <View className="-mr-3 -mt-7 h-2 w-2 rounded-full bg-purple"></View>
           </View>

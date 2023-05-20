@@ -1,69 +1,20 @@
+/* eslint-disable no-undef */
 import { NavigationContainer } from '@react-navigation/native'
 
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from '@expo-google-fonts/inter'
 
-import Toast, {
-  BaseToast,
-  BaseToastProps,
-  ErrorToast,
-} from 'react-native-toast-message'
+import Toast from 'react-native-toast-message'
 
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import { useCallback } from 'react'
 
-import Routes from './src/routes'
+import Routes from './src/routes/routes'
+
+import { toastConfig } from './utils/toastConfig'
 
 SplashScreen.preventAutoHideAsync()
-
-const toastConfig = {
-  // eslint-disable-next-line no-undef
-  success: (props: JSX.IntrinsicAttributes & BaseToastProps) => (
-    <BaseToast
-      {...props}
-      style={{ borderLeftColor: '#31cf67' }}
-      contentContainerStyle={{
-        height: 60,
-        paddingHorizontal: 15,
-        backgroundColor: '#171717',
-      }}
-      text1Style={{
-        fontSize: 18,
-        color: '#f5f5f5',
-        fontWeight: '600',
-      }}
-      text2Style={{
-        fontSize: 14,
-      }}
-    />
-  ),
-  // eslint-disable-next-line no-undef
-  error: (props: JSX.IntrinsicAttributes & BaseToastProps) => (
-    <ErrorToast
-      {...props}
-      contentContainerStyle={{
-        height: 60,
-        paddingHorizontal: 15,
-        backgroundColor: '#171717',
-      }}
-      text1Style={{
-        fontSize: 18,
-        color: '#f5f5f5',
-        fontWeight: '600',
-      }}
-      text2Style={{
-        fontSize: 14,
-      }}
-    />
-  ),
-  tomatoToast: ({ text1, props }: any) => (
-    <View style={{ height: 60, width: '100%', backgroundColor: 'tomato' }}>
-      <Text>{text1}</Text>
-      <Text>{props.uuid}</Text>
-    </View>
-  ),
-}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -85,9 +36,9 @@ export default function App() {
     <>
       <NavigationContainer>
         <Routes />
-        <Toast config={toastConfig} />
-        <View onLayout={onLayoutRootView}></View>
       </NavigationContainer>
+      <Toast config={toastConfig} />
+      <View onLayout={onLayoutRootView}></View>
     </>
   )
 }

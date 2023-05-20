@@ -2,12 +2,12 @@ import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 
-import { Home } from './screens/Home'
-import { Profile } from './screens/Profile'
+import { Home } from '../screens/Home'
+import { Profile } from '../screens/Profile'
 
 const Tab = createBottomTabNavigator()
 
-export default function Routes() {
+export default function Routes1() {
   return (
     <Tab.Navigator
       screenOptions={{
