@@ -10,11 +10,8 @@ import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
 
 import React from 'react'
+
 import { Card } from '../../components/EventCard'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-
-const Tab = createBottomTabNavigator()
-
 export function Home() {
   return (
     <View className="flex-1 bg-black px-4">
@@ -30,7 +27,7 @@ export function Home() {
           <View className="-mt-4 items-center justify-center">
             <TouchableOpacity>
               <Ionicons name="notifications" size={28} color="#6B6B6B" />
-              </TouchableOpacity>
+            </TouchableOpacity>
 
             <View className="-mr-3 -mt-7 h-2 w-2 rounded-full bg-purple"></View>
           </View>
@@ -83,7 +80,7 @@ export function Home() {
           image_url="https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
         />
       </ScrollView>
-      <StatusBar style="inverted" />
+      <StatusBar style="light" />
     </View>
   )
 }

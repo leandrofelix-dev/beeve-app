@@ -36,15 +36,18 @@ export default function Routes() {
         options={{
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="albums" size={size} color={color} />
-          ), tabBarBadge: 0}}
+          ),
+          tabBarBadge: undefined,
+        }}
       />
       <Tab.Screen
         name="Perfil"
         component={Profile}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <Ionicons name="add-circle" size={size} color={color} />
+            <Ionicons name="person-circle-outline" size={size} color={color} />
           ),
+          tabBarBadge: undefined,
         }}
       />
       <Tab.Screen
@@ -53,7 +56,8 @@ export default function Routes() {
         options={{
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="albums" size={size} color={color} />
-          )}}
+          ),
+        }}
       />
       <Tab.Screen
         name="Notificações"
@@ -61,7 +65,8 @@ export default function Routes() {
         options={{
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="notifications" size={size} color={color} />
-          )}}
+          ),
+        }}
       />
     </Tab.Navigator>
   )
