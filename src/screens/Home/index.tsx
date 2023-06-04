@@ -4,6 +4,7 @@ import {
   ScrollView,
   TextInput,
   TouchableOpacity,
+  RefreshControl,
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
@@ -15,14 +16,26 @@ import { http } from '../../api/axios'
 
 export function Home() {
   const [events, setEvents]: any = useState()
-  useEffect(() => {
-    http
-      .get('/events')
-      .then((res) => {
-        setEvents(res.data)
-      })
-      .catch((err) => { console.log(err.message) })
-  }, [])
+  const [refreshing, setRefreshing] = useState(false)
+
+  const fetchEvents = () => {
+    setTimeout(() => {
+      http
+        .get('/events')
+        .then((res) => {
+          setEvents(res.data)
+        })
+        .catch((err) => { console.log(err.message) })
+
+      setRefreshing(false)
+    }, 2000)
+  }
+  
+  const onRefresh = () => { setRefreshing(true) }
+
+  useEffect(() => { fetchEvents() }, [])
+  useEffect(() => { if (refreshing) { fetchEvents() } }, [refreshing])
+
   return (
     <View className="flex-1 bg-black px-4">
       <View className="mt-16">
@@ -63,7 +76,15 @@ export function Home() {
           </View>
         </View>
       </View>
-      <ScrollView>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+          />
+        }
+      >
         {events?.map((event: {
           name: string;
           date: string;
