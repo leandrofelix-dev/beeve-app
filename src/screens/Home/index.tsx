@@ -13,6 +13,7 @@ import React, { useEffect, useState } from 'react'
 
 import { Card } from '../../components/EventCard'
 import { http } from '../../api/axios'
+import { EventsNotFound } from '../../components/EventsNotFound'
 
 export function Home() {
   const [events, setEvents]: any = useState()
@@ -22,15 +23,19 @@ export function Home() {
     setTimeout(() => {
       http
         .get('/events')
-        .then((res) => {
-          setEvents(res.data)
+          .then((res) => {
+            console.log(res.data.length)
+            setEvents(res.data)
+          })
+        .catch((err) => {
+          console.log(err.message)
+          setEvents(null)
         })
-        .catch((err) => { console.log(err.message) })
 
       setRefreshing(false)
     }, 2000)
   }
-  
+
   const onRefresh = () => { setRefreshing(true) }
 
   useEffect(() => { fetchEvents() }, [])
@@ -77,7 +82,7 @@ export function Home() {
         </View>
       </View>
       <ScrollView
-        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'flex-start' }}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
@@ -85,7 +90,8 @@ export function Home() {
           />
         }
       >
-        {events?.map((event: {
+        {events !== null ?
+          events?.map((event: {
           name: string;
           date: string;
           location: string;
@@ -96,9 +102,12 @@ export function Home() {
               name={event.name}
               date={event.date}
               location={event.location}
-            image_url={event.coverUrl}
+              image_url={event.coverUrl}
             />
-        ))}
+          ))
+          :
+          <EventsNotFound />
+        }
       </ScrollView>
       <StatusBar style="light" />
     </View>
