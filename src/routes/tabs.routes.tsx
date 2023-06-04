@@ -3,13 +3,13 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 
 import { Home } from '../screens/Home'
-import { Profile } from '../screens/Profile'
+
 import { Notification } from '../screens/Notification'
-import { Registration } from '../screens/Registration'
+import { Profile } from '../screens/Profile'
 
 const Tab = createBottomTabNavigator()
 
-export default function Routes() {
+export default function TabRoutes() {
   return (
     <Tab.Navigator
       screenOptions={{
@@ -31,43 +31,33 @@ export default function Routes() {
       }}
     >
       <Tab.Screen
-        name="Eventos"
+        name="eventScreen"
         component={Home}
         options={{
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="albums" size={size} color={color} />
           ),
-          tabBarBadge: undefined,
+          tabBarLabel: 'Eventos',
+          tabBarBadge: undefined, //notificationCounter
         }}
       />
       <Tab.Screen
-        name="Perfil"
+        name="profileScreen"
         component={Profile}
         options={{
           tabBarIcon: ({ size, color }) => (
             <Ionicons name="person-circle-outline" size={size} color={color} />
           ),
-          tabBarBadge: undefined,
+          tabBarLabel: 'Perfil',
+          tabBarBadge: undefined, //notificationCounter
         }}
       />
+
       <Tab.Screen
-        name="Registros"
-        component={Registration}
-        options={{
-          tabBarIcon: ({ size, color }) => (
-            <Ionicons name="albums" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Notificações"
+        name="notificationScreen"
         component={Notification}
-        options={{
-          tabBarIcon: ({ size, color }) => (
-            <Ionicons name="notifications" size={size} color={color} />
-          ),
-        }}
       />
+
     </Tab.Navigator>
   )
 }

@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import {
   Text,
   View,
@@ -8,11 +7,22 @@ import {
 } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
-
-import React from 'react'
+import { Link } from '@react-navigation/native'
+import React, { useEffect, useState } from 'react'
 
 import { Card } from '../../components/EventCard'
+import { http } from '../../api/axios'
+
 export function Home() {
+  const [events, setEvents]: any = useState()
+  useEffect(() => {
+    http
+      .get('/events')
+      .then((res) => {
+        setEvents(res.data)
+      })
+      .catch((err) => { console.log(err.message) })
+  }, [])
   return (
     <View className="flex-1 bg-black px-4">
       <View className="mt-16">
@@ -26,7 +36,9 @@ export function Home() {
 
           <View className="-mt-4 items-center justify-center">
             <TouchableOpacity>
-              <Ionicons name="notifications" size={28} color="#6B6B6B" />
+              <Link to={{ screen: 'notification' }}>
+                <Ionicons name="notifications" size={28} color="#6B6B6B" />
+              </Link>
             </TouchableOpacity>
 
             <View className="-mr-3 -mt-7 h-2 w-2 rounded-full bg-purple"></View>
@@ -52,33 +64,20 @@ export function Home() {
         </View>
       </View>
       <ScrollView>
-        <Card
-          name="E.N.A.T.I. IFCE Cedro"
-          date="26 de abril de 2023"
-          location="Cedro/CE"
-          image_url="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
-        />
-
-        <Card
-          name="FliSol 2023.1"
-          date="14 de abril de 2023"
-          location="Cedro/CE"
-          image_url="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        />
-
-        <Card
-          name="III Robotech"
-          date="20 de junho de 2023"
-          location="Várzea Alegre/CE"
-          image_url="https://images.unsplash.com/photo-1558137623-ce933996c730?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=806&q=80"
-        />
-
-        <Card
-          name="Dia da informática"
-          date="20 de junho de 2023"
-          location="Cedro/CE"
-          image_url="https://images.unsplash.com/photo-1577375729152-4c8b5fcda381?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
-        />
+        {events?.map((event: {
+          name: string;
+          date: string;
+          location: string;
+          id: string,
+          coverUrl: string }) => (
+            <Card
+              key={event.id}
+              name={event.name}
+              date={event.date}
+              location={event.location}
+            image_url={event.coverUrl}
+            />
+        ))}
       </ScrollView>
       <StatusBar style="light" />
     </View>

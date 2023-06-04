@@ -6,8 +6,7 @@ import { View } from 'react-native'
 import { useCallback } from 'react'
 import { toastConfig } from './utils/toastConfig'
 import Toast from 'react-native-toast-message'
-import Routes from './src/routes/routes'
-import axios from 'axios'
+import Routes from './src/routes'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -21,38 +20,15 @@ export default function App() {
     if (fontsLoaded) {
       await SplashScreen.hideAsync()
     }
-  }, [fontsLoaded])
+  }, [fontsLoaded]) 
 
   if (!fontsLoaded) {
     return null
   }
 
-  const baseUrl = 'http://localhost:3333/api/'
-  axios
-    .get(`${baseUrl}event/62RIX4`)
-    .then((response) => {
-      console.log(response.data)
-    })
-    .catch((error) => {
-      if (error.response) {
-        // Erro de resposta do servidor (status code fora do intervalo 2xx)
-        console.log(error.response.data)
-        console.log(error.response.status)
-      } else if (error.request) {
-        // Requisição feita, mas não houve resposta do servidor
-        console.log('Sem resposta do servidor')
-      } else {
-        // Erro ao configurar a requisição
-        console.log('Erro ao fazer a requisição', error.message)
-      }
-    })
-
   return (
     <>
-      <NavigationContainer>
-        <Routes />
-      </NavigationContainer>
-
+      <Routes />
       <Toast config={toastConfig} />
       <View onLayout={onLayoutRootView}></View>
     </>
