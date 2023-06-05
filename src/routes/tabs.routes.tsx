@@ -4,8 +4,8 @@ import { Ionicons } from '@expo/vector-icons'
 
 import { Home } from '../screens/Home'
 
-import { Notification } from '../screens/Notification'
 import { Profile } from '../screens/Profile'
+import { Registration } from '../screens/Registration'
 
 const Tab = createBottomTabNavigator()
 
@@ -54,8 +54,8 @@ export default function TabRoutes() {
       />
 
       <Tab.Screen
-        name="notificationScreen"
-        component={Notification}
+        name="registerScreen"
+        component={Registration}
       />
 
     </Tab.Navigator>

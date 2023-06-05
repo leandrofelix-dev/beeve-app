@@ -24,11 +24,10 @@ export function Home() {
       http
         .get('/events')
           .then((res) => {
-            console.log(res.data.length)
             setEvents(res.data)
           })
         .catch((err) => {
-          console.log(err.message)
+          console.error(err.message)
           setEvents(null)
         })
 
@@ -82,7 +81,7 @@ export function Home() {
         </View>
       </View>
       <ScrollView
-        contentContainerStyle={{ flexGrow: 1, justifyContent: 'flex-start' }}
+        contentContainerStyle={{justifyContent: 'flex-start' }}
         refreshControl={
           <RefreshControl
             refreshing={refreshing}
