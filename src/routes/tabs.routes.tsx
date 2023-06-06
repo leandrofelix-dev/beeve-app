@@ -5,7 +5,8 @@ import { Ionicons } from '@expo/vector-icons'
 import { Home } from '../screens/Home'
 
 import { Profile } from '../screens/Profile'
-import { Registration } from '../screens/Registration'
+import Login from '../screens/Login'
+import SignIn from '../screens/SignIn'
 
 const Tab = createBottomTabNavigator()
 
@@ -54,8 +55,13 @@ export default function TabRoutes() {
       />
 
       <Tab.Screen
-        name="registerScreen"
-        component={Registration}
+        name="loginScreen"
+        component={Login}
+      />
+
+      <Tab.Screen
+        name="signScreen"
+        component={SignIn}
       />
 
     </Tab.Navigator>
