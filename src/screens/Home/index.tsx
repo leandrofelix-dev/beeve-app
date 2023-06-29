@@ -6,16 +6,19 @@ import {
   TouchableOpacity,
   RefreshControl,
 } from 'react-native'
+
 import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
-import { Link } from '@react-navigation/native'
 import React, { useEffect, useState } from 'react'
 
 import { Card } from '../../components/EventCard'
 import { http } from '../../api/axios'
 import { EventsNotFound } from '../../components/EventsNotFound'
+import { useNavigation } from '@react-navigation/native'
 
 export function Home() {
+  const { navigate } = useNavigation()
+
   const [events, setEvents]: any = useState()
   const [refreshing, setRefreshing] = useState(false)
 
@@ -52,10 +55,11 @@ export function Home() {
           </View>
 
           <View className="-mt-4 items-center justify-center">
-            <TouchableOpacity>
-              <Link to={{ screen: 'notification' }}>
-                <Ionicons name="notifications" size={28} color="#6B6B6B" />
-              </Link>
+            <TouchableOpacity
+              onPress={() => navigate('notificationScreen')}
+              activeOpacity={0.7}
+            >
+              <Ionicons name="notifications" size={28} color="#6B6B6B" />
             </TouchableOpacity>
 
             <View className="-mr-3 -mt-7 h-2 w-2 rounded-full bg-purple"></View>

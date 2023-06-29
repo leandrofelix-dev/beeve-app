@@ -2,6 +2,7 @@ import { ScrollView, Text, View } from "react-native"
 import { SignInForm } from "../../components/SignInForm"
 
 export default function SignIn() {
+
   return (
     <View className="bg-black flex-1 pt-20 px-6">
       <View>

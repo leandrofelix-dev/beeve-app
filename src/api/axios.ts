@@ -1,6 +1,7 @@
 import Constants from 'expo-constants'
-const apiUrl = Constants.expoConfig?.extra?.apiUrl
 import axios from "axios"
+
+const apiUrl = Constants.expoConfig?.extra?.apiUrl
 
 export const http = axios.create({
   baseURL: apiUrl,

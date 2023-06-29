@@ -1,21 +1,30 @@
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import React, { useState } from 'react';
-import Checkbox from 'expo-checkbox'
+import React, { useState } from 'react'
 
-import Toast from 'react-native-toast-message'
+import { http } from '../api/axios'
+
+import Checkbox from 'expo-checkbox'
 
 export function SignInForm() {
   const [isChecked, setChecked] = useState(false);
-  function handleParticipantAdd() {
-    Toast.show({
-      type: 'success',
-      text1: 'Registrado com Sucesso!',
-      text2: 'Uhul! Nos vemos lá! 👋',
-      position: 'top',
-      visibilityTime: 3000,
-      autoHide: true,
-    })
+
+  const [user, setUser] = useState({
+    firstName: '',
+    lastName: '',
+    age: 0,
+    email: '',
+    password: '',
+    passwordConfirmation: '',
+    isLinkedToIfce: false,
+    course: null,
+    semester: null
+  })
+
+  function handleFormSubmit() {
+    console.log(user)
+    http.post('/users', user)
+
   }
   return (
     <View>
@@ -23,14 +32,18 @@ export function SignInForm() {
         <TextInput
         placeholder="Nome"
         placeholderTextColor={'#6B6B6B'}
-        keyboardType="default"
-        className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-1/2 mr-2'
+          keyboardType="default"
+          className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-1/2 mr-2'
+          onChangeText={text => setUser({ ...user, firstName: text })
+
+          }
         />
         <TextInput
         placeholder="Sobrenome"
         placeholderTextColor={'#6B6B6B'}
         keyboardType="default"
-        className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-1/2'
+          className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-1/2'
+          onChangeText={text => setUser({ ...user, lastName: text })}
       />
       </View>
       <View className='flex-row'>
@@ -39,6 +52,7 @@ export function SignInForm() {
           placeholderTextColor={'#6B6B6B'}
           keyboardType="email-address"
           className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-4/6 mr-2'
+          onChangeText={text => setUser({ ...user, email: text })}
         />
 
         <TextInput
@@ -46,8 +60,23 @@ export function SignInForm() {
           placeholderTextColor={'#6B6B6B'}
           keyboardType='number-pad'
           className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-2/6'
+          onChangeText={text => setUser({ ...user, age: Number(text) })}
           />
       </View>
+      <TextInput
+        placeholder="Senha"
+        placeholderTextColor={'#6B6B6B'}
+        keyboardType='default'
+        className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-full'
+        onChangeText={text => setUser({ ...user, password: text })}
+      />
+      <TextInput
+        placeholder="Confirmar senha"
+        placeholderTextColor={'#6B6B6B'}
+        keyboardType='default'
+        className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-full'
+        onChangeText={text => setUser({ ...user, passwordConfirmation: text })}
+      />
       <View className='flex-row mt-3 mb-4 ml-2 items-center'>
           <Checkbox
           className='mr-2 border-0 bg-gray200 opacity-60 w-4 h-4'
@@ -78,6 +107,7 @@ export function SignInForm() {
           placeholderTextColor={'#6B6B6B'}
           keyboardType='default'
           className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-full'
+          // onChangeText={text => setUser({ ...user, course: text })}
           />
       </View>
 
@@ -85,7 +115,7 @@ export function SignInForm() {
       className='bg-purple flex-row items-center justify-center py-4 rounded-md mt-2'
         activeOpacity={0.7}
         onPress={() => {
-          handleParticipantAdd()
+          handleFormSubmit()
         }}
       >
         <Ionicons
@@ -101,9 +131,6 @@ export function SignInForm() {
       <TouchableOpacity
       className='flex-row items-center justify-center py-4 rounded-md border-2 border-purple'
         activeOpacity={0.7}
-        onPress={() => {
-          handleParticipantAdd()
-        }}
       >
         <Ionicons
           name="person"
@@ -116,4 +143,7 @@ export function SignInForm() {
       </TouchableOpacity>
     </View>
   )
+}
+function then(arg0: (res: any) => void) {
+  throw new Error('Function not implemented.')
 }

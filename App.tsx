@@ -1,6 +1,5 @@
 /* eslint-disable no-undef */
 import * as SplashScreen from 'expo-splash-screen'
-import { NavigationContainer } from '@react-navigation/native'
 import { useFonts } from '@expo-google-fonts/inter'
 import { View } from 'react-native'
 import { useCallback } from 'react'
@@ -20,7 +19,7 @@ export default function App() {
     if (fontsLoaded) {
       await SplashScreen.hideAsync()
     }
-  }, [fontsLoaded]) 
+  }, [fontsLoaded])
 
   if (!fontsLoaded) {
     return null
@@ -28,9 +27,9 @@ export default function App() {
 
   return (
     <>
-      <Routes />
+      <View onLayout={onLayoutRootView}/>
+        <Routes />
       <Toast config={toastConfig} />
-      <View onLayout={onLayoutRootView}></View>
     </>
   )
 }
