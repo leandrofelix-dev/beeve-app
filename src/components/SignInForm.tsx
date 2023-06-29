@@ -1,10 +1,9 @@
+import React, { useState } from 'react'
+import Checkbox from 'expo-checkbox'
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import React, { useState } from 'react'
 
 import { http } from '../api/axios'
-
-import Checkbox from 'expo-checkbox'
 
 export function SignInForm() {
   const [isChecked, setChecked] = useState(false);
@@ -22,9 +21,14 @@ export function SignInForm() {
   })
 
   function handleFormSubmit() {
-    console.log(user)
-    http.post('/users', user)
-
+    // isChecked ? user.isLinkedToIfce = true : user.isLinkedToIfce = false
+    try {
+      console.log(user)
+      http.post('/user', user)
+    }
+    catch (err) {
+      console.log(err)
+    }
   }
   return (
     <View>
@@ -77,39 +81,42 @@ export function SignInForm() {
         className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-full'
         onChangeText={text => setUser({ ...user, passwordConfirmation: text })}
       />
-      <View className='flex-row mt-3 mb-4 ml-2 items-center'>
+      <View
+        className='flex-row mt-3 mb-4 ml-2 items-center'>
           <Checkbox
           className='mr-2 border-0 bg-gray200 opacity-60 w-4 h-4'
           value={isChecked}
           onValueChange={setChecked}
           color={isChecked ? '#4630EB' : undefined}
         />
-          <Text className='text-gray200'>Sou aluno do IFCE</Text>
+          <Text className='text-gray200'>Sou aluno(a) do IFCE</Text>
       </View>
-      <View className='flex-row'>
-        <TextInput
-          placeholder="Matrícula"
-          placeholderTextColor={'#6B6B6B'}
-          keyboardType="number-pad"
-          className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-4/6 mr-2'
-        />
+      {
+        isChecked && (
+          <>
+            <View className='flex-row'>
+              <TextInput
+                placeholder="Matrícula"
+                placeholderTextColor={'#6B6B6B'}
+                keyboardType="number-pad"
+                className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-4/6 mr-2' />
 
-        <TextInput
-          placeholder="Semestre"
-          placeholderTextColor={'#6B6B6B'}
-          keyboardType='number-pad'
-          className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-2/6'
-          />
-      </View>
-      <View>
-        <TextInput
-          placeholder="Curso"
-          placeholderTextColor={'#6B6B6B'}
-          keyboardType='default'
-          className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-full'
-          // onChangeText={text => setUser({ ...user, course: text })}
-          />
-      </View>
+              <TextInput
+                placeholder="Semestre"
+                placeholderTextColor={'#6B6B6B'}
+                keyboardType='number-pad'
+                className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-2/6' />
+            </View>
+            <View>
+              <TextInput
+                placeholder="Curso"
+                placeholderTextColor={'#6B6B6B'}
+                keyboardType='default'
+                className='text-white bg-gray300 h-12 rounded px-4 mb-2 w-full' />
+            </View>
+          </>
+        )
+      }
 
       <TouchableOpacity
       className='bg-purple flex-row items-center justify-center py-4 rounded-md mt-2'
@@ -143,7 +150,4 @@ export function SignInForm() {
       </TouchableOpacity>
     </View>
   )
-}
-function then(arg0: (res: any) => void) {
-  throw new Error('Function not implemented.')
 }
