@@ -26,9 +26,9 @@ export function Home() {
     setTimeout(() => {
       http
         .get('/events')
-          .then((res) => {
-            setEvents(res.data)
-          })
+        .then((res) => {
+          setEvents(res.data)
+        })
         .catch((err) => {
           console.error(err.message)
           setEvents(null)
@@ -38,10 +38,18 @@ export function Home() {
     }, 2000)
   }
 
-  const onRefresh = () => { setRefreshing(true) }
+  const onRefresh = () => {
+    setRefreshing(true)
+  }
 
-  useEffect(() => { fetchEvents() }, [])
-  useEffect(() => { if (refreshing) { fetchEvents() } }, [refreshing])
+  useEffect(() => {
+    fetchEvents()
+  }, [])
+  useEffect(() => {
+    if (refreshing) {
+      fetchEvents()
+    }
+  }, [refreshing])
 
   return (
     <View className="flex-1 bg-black px-4">
@@ -85,32 +93,32 @@ export function Home() {
         </View>
       </View>
       <ScrollView
-        contentContainerStyle={{justifyContent: 'flex-start' }}
+        contentContainerStyle={{ justifyContent: 'flex-start' }}
         refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-          />
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       >
-        {events !== null ?
-          events?.map((event: {
-          name: string;
-          date: string;
-          location: string;
-          id: string,
-          coverUrl: string }) => (
-            <Card
-              key={event.id}
-              name={event.name}
-              date={event.date}
-              location={event.location}
-              image_url={event.coverUrl}
-            />
-          ))
-          :
+        {events !== null ? (
+          events?.map(
+            (event: {
+              name: string
+              date: string
+              location: string
+              id: string
+              coverUrl: string
+            }) => (
+              <Card
+                key={event.id}
+                name={event.name}
+                date={event.date}
+                location={event.location}
+                image_url={event.coverUrl}
+              />
+            ),
+          )
+        ) : (
           <EventsNotFound />
-        }
+        )}
       </ScrollView>
       <StatusBar style="light" />
     </View>
