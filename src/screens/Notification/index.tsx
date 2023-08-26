@@ -4,10 +4,10 @@ import { NotificationCard } from '../../components/NotificationCard'
 
 export function Notification() {
   return (
-    <View className="h-screen bg-black px-4 pt-20">
+    <View className="h-screen flex-1 bg-black px-4 pt-20">
       <View>
         <Text className="text-4xl font-bold text-white">Notificações</Text>
-        <Text className="text-md text-gray200">
+        <Text className="text-lg text-gray200">
           Suas notificações recentes aparecerão aqui
         </Text>
       </View>
@@ -17,7 +17,7 @@ export function Notification() {
           readed={true}
         />
         <NotificationCard
-          msg="⛅ Opaa! Já é amanhã! Pronto para o E.N.A.T IFCE Cedro? Estamos tão asiosos quanto você! 🥰😍"
+          msg="⛅ Opaa! Já é amanhã! Pronto para o E.N.A.T IFCE Cedro? Estamos tão ansiosos quanto você! 🥰😍"
           readed={false}
         />
         <NotificationCard
@@ -25,7 +25,7 @@ export function Notification() {
           readed={true}
         />
         <NotificationCard
-          msg="⛅ Opaa! Já é amanhã! Pronto para o E.N.A.T IFCE Cedro? Estamos tão asiosos quanto você! 🥰😍"
+          msg="⛅ Opaa! Já é amanhã! Pronto para o E.N.A.T IFCE Cedro? Estamos tão ansiosos quanto você! 🥰😍"
           readed={false}
         />
         <NotificationCard

@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack' // Importe o TabRoutes que você já definiu
+import { createStackNavigator } from '@react-navigation/stack'
 import TabRoutes from './tabs.routes'
 import { Notification } from '../screens/Notification'
 
@@ -11,6 +11,18 @@ export default function AppNavigator() {
       initialRouteName="Tabs"
       screenOptions={{
         headerShown: false,
+        cardStyleInterpolator: ({ current, layouts }) => ({
+          cardStyle: {
+            transform: [
+              {
+                translateX: current.progress.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [layouts.screen.width, 0],
+                }),
+              },
+            ],
+          },
+        }),
       }}
     >
       <Stack.Screen name="Tabs" component={TabRoutes} />
