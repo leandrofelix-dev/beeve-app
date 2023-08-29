@@ -13,6 +13,8 @@ import { useRoute } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 
 import ProgressBar from '../../components/ProgressBar'
+import { showToastConfirmation } from '../../../utils/toastConfirmation'
+import { Toast } from 'react-native-toast-message/lib/src/Toast'
 
 export function EventInfoScreen() {
   const route = useRoute()
@@ -34,18 +36,18 @@ export function EventInfoScreen() {
   function handleSubmitRegistration() {
     const registrationData = {
       idEvent: eventId,
-      idUser: 'bde769de-c092-47dd-8181-abce0a633645',
+      idUser: '8c26c85e-e9a5-4595-ac21-e404851829d2',
     }
-    console.log(registrationData)
     http
       .post('/registration', registrationData)
       .then((res) => {
         console.log(res.data)
-        console.log('Registrado com sucesso')
+        showToastConfirmation()
       })
       .catch((err) => {
         console.error(err)
         console.log('Ocorreu um erro ao registrar')
+        showToastConfirmation()
       })
   }
   return (

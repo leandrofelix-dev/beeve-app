@@ -27,9 +27,9 @@ export default function App() {
 
   return (
     <>
-      <Toast config={toastConfig} />
-      <View onLayout={onLayoutRootView} />
       <Routes />
+      <Toast config={toastConfig} />
+      <View onLayout={onLayoutRootView}></View>
     </>
   )
 }

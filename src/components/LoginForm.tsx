@@ -2,21 +2,10 @@ import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
 import Checkbox from 'expo-checkbox'
-
-import Toast from 'react-native-toast-message'
+import { showToastConfirmation } from '../../utils/toastConfirmation'
 
 export function LoginForm() {
   const [isChecked, setChecked] = useState(false)
-  function handleParticipantAdd() {
-    Toast.show({
-      type: 'success',
-      text1: 'Registrado com Sucesso!',
-      text2: 'Uhul! Nos vemos lá! 👋',
-      position: 'top',
-      visibilityTime: 3000,
-      autoHide: true,
-    })
-  }
   return (
     <View>
       <TextInput
@@ -45,7 +34,7 @@ export function LoginForm() {
         className="mt-2 flex-row items-center justify-center rounded-md bg-blue py-4"
         activeOpacity={0.7}
         onPress={() => {
-          handleParticipantAdd()
+          showToastConfirmation()
         }}
       >
         <Ionicons name="person" size={20} color="#fff" />
@@ -58,7 +47,7 @@ export function LoginForm() {
         className="flex-row items-center justify-center rounded-md border-2 border-blue py-4"
         activeOpacity={0.7}
         onPress={() => {
-          handleParticipantAdd()
+          showToastConfirmation()
         }}
       >
         <Ionicons name="person-add" size={20} color="#fff" />

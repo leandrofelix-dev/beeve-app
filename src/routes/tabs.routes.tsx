@@ -4,6 +4,8 @@ import { Ionicons } from '@expo/vector-icons'
 
 import { Home } from '../screens/Home'
 import { Profile } from '../screens/Profile'
+import Login from '../screens/Login'
+import SignIn from '../screens/SignUp'
 
 const Tab = createBottomTabNavigator()
 
@@ -47,6 +49,22 @@ export default function TabRoutes() {
             <Ionicons name="person-circle-outline" size={size} color={color} />
           ),
           tabBarLabel: 'Perfil',
+          tabBarBadge: undefined, // notificationCounter
+        }}
+      />
+      <Tab.Screen
+        name="login"
+        component={Login}
+        options={{
+          tabBarLabel: 'Login',
+          tabBarBadge: undefined, // notificationCounter
+        }}
+      />
+      <Tab.Screen
+        name="signup"
+        component={SignIn}
+        options={{
+          tabBarLabel: 'Registers',
           tabBarBadge: undefined, // notificationCounter
         }}
       />
