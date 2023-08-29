@@ -5,7 +5,8 @@ export declare global {
       homeScreen: undefined
       loginScreen: undefined
       registerScreen: undefined
+      eventInfoScreen: undefined
+      tabs: undefined
     }
   }
-
 }

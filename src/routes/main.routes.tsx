@@ -1,14 +1,17 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+
 import TabRoutes from './tabs.routes'
+
+import { createStackNavigator } from '@react-navigation/stack'
 import { Notification } from '../screens/Notification'
+import { EventInfoScreen } from '../screens/Event'
 
 const Stack = createStackNavigator()
 
-export default function AppNavigator() {
+export default function MainAppNavigator() {
   return (
     <Stack.Navigator
-      initialRouteName="Tabs"
+      initialRouteName="tabs"
       screenOptions={{
         headerShown: false,
         cardStyleInterpolator: ({ current, layouts }) => ({
@@ -25,7 +28,8 @@ export default function AppNavigator() {
         }),
       }}
     >
-      <Stack.Screen name="Tabs" component={TabRoutes} />
+      <Stack.Screen name="tabs" component={TabRoutes} />
+      <Stack.Screen name="eventInfoScreen" component={EventInfoScreen} />
       <Stack.Screen name="notificationScreen" component={Notification} />
     </Stack.Navigator>
   )

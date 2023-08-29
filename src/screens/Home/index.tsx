@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-key */
 import {
   Text,
   View,
@@ -57,9 +58,9 @@ export function Home() {
         <View className="flex-row justify-between">
           <View className="mx-4 flex-col justify-between">
             <Text className="text-4xl font-extrabold text-white">
-              I am Here
+              Logo aqui
             </Text>
-            <Text className="text-xl text-gray100">Bem vindo(a) de volta!</Text>
+            <Text className="text-lg text-gray100">{`Bem vindo(a) de volta!`}</Text>
           </View>
 
           <View className="-mt-4 items-center justify-center">
@@ -75,7 +76,7 @@ export function Home() {
         </View>
         <View className="mt-6 justify-center">
           <Text className="font-bold text-gray100">
-            Inserir código personalizado
+            {`Inserir código personalizado`}
           </Text>
           <View className="flex-row items-center justify-between">
             <TextInput
@@ -107,13 +108,20 @@ export function Home() {
               id: string
               coverUrl: string
             }) => (
-              <Card
+              <TouchableOpacity
+                activeOpacity={0.7}
                 key={event.id}
-                name={event.name}
-                date={event.date}
-                location={event.location}
-                image_url={event.coverUrl}
-              />
+                onPress={() =>
+                  navigate('eventInfoScreen', { eventId: event.id })
+                }
+              >
+                <Card
+                  name={event.name}
+                  date={event.date}
+                  location={event.location}
+                  imageUrl={event.coverUrl}
+                />
+              </TouchableOpacity>
             ),
           )
         ) : (
