@@ -9,9 +9,10 @@ import {
 import { http } from '../../api/axios'
 import { Ionicons } from '@expo/vector-icons'
 
-import ProgressBar from '../../components/ProgressBar'
 import { useRoute } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
+
+import ProgressBar from '../../components/ProgressBar'
 
 export function EventInfoScreen() {
   const route = useRoute()
@@ -20,9 +21,7 @@ export function EventInfoScreen() {
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
   const [location, setLocation] = useState('')
-  const [coverUrl, setCoverUrl] = useState(
-    'https://storage.googleapis.com/imhere-firebase.appspot.com/1692971800526.jpg',
-  )
+  const [coverUrl, setCoverUrl] = useState('')
   useEffect(() => {
     http.get(`/event/${eventId}`).then((res) => {
       const { name, description, location, coverUrl } = res.data[0]
@@ -32,6 +31,23 @@ export function EventInfoScreen() {
       setCoverUrl(coverUrl)
     })
   })
+  function handleSubmitRegistration() {
+    const registrationData = {
+      idEvent: eventId,
+      idUser: 'bde769de-c092-47dd-8181-abce0a633645',
+    }
+    console.log(registrationData)
+    http
+      .post('/registration', registrationData)
+      .then((res) => {
+        console.log(res.data)
+        console.log('Registrado com sucesso')
+      })
+      .catch((err) => {
+        console.error(err)
+        console.log('Ocorreu um erro ao registrar')
+      })
+  }
   return (
     <View className="h-screen w-screen flex-1 bg-black">
       <View className="absolute left-4 top-8 z-10"></View>
@@ -96,7 +112,10 @@ export function EventInfoScreen() {
               preenchidas
             </Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7}>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={handleSubmitRegistration}
+          >
             <View className="h-14 w-full flex-row items-center justify-center rounded-lg bg-purple">
               <Ionicons name="calendar" size={18} color="white" />
               <Text className="text-md ml-3 font-bold text-white">

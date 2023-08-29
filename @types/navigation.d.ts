@@ -8,5 +8,8 @@ export declare global {
       eventInfoScreen: undefined
       tabs: undefined
     }
+    interface Evento {
+      eventId: string
+    }
   }
 }
