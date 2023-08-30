@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-import { View, Text } from 'react-native'
 import {
   BaseToast,
   BaseToastProps,

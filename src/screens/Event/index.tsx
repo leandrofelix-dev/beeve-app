@@ -9,20 +9,23 @@ import {
 import { http } from '../../api/axios'
 import { Ionicons } from '@expo/vector-icons'
 
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 
 import ProgressBar from '../../components/ProgressBar'
 import { showToast } from '../../../utils/showToast'
 
 export function EventInfoScreen() {
+  const { navigate } = useNavigation()
   const route = useRoute()
   const { eventId } = route.params
 
-  const [name, setName] = useState('')
-  const [description, setDescription] = useState('')
+  const [name, setName] = useState('Nome')
+  const [description, setDescription] = useState('descrição...')
   const [location, setLocation] = useState('')
-  const [coverUrl, setCoverUrl] = useState('')
+  const [coverUrl, setCoverUrl] = useState(
+    'https://firebasestorage.googleapis.com/v0/b/imhere-firebase.appspot.com/o/1689118036677.png?alt=media&token=64f82e2a-2b90-40bf-b640-b7f7d8f26a3e',
+  )
   useEffect(() => {
     http.get(`/event/${eventId}`).then((res) => {
       const { name, description, location, coverUrl } = res.data[0]
@@ -35,7 +38,7 @@ export function EventInfoScreen() {
   function handleSubmitRegistration() {
     const registrationData = {
       idEvent: eventId,
-      idUser: '8c26c85e-e9a5-4595-ac21-e404851829d2',
+      idUser: '9444b8c0-a385-4e1c-a95a-124e787f250b',
     }
     http
       .post('/registration', registrationData)
@@ -54,6 +57,9 @@ export function EventInfoScreen() {
           text2: 'Aliens raptaram a minha conexão!! 🛸🚫',
         })
       })
+    setTimeout(() => {
+      navigate('tabs')
+    }, 1000)
   }
   return (
     <View className="h-screen w-screen flex-1 bg-black">
