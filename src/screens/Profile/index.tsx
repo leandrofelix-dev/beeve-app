@@ -1,10 +1,36 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { Text, View, ScrollView } from 'react-native'
-import { Image } from 'expo-image'
+import React, { useState, useEffect } from 'react'
+import { Text, View, ScrollView, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
 import { Card } from '../../components/EventCard'
+import { http } from '../../api/axios'
+import { login } from '../../../data/login'
+import { showToast } from '../../../utils/showToast'
 
 export function Profile() {
+  const [userName, setUserName] = useState('carregando')
+  const [events, setEvents] = useState([])
+
+  useEffect(() => {
+    http
+      .get(`/auth/user/${login.id}`)
+      .then((res) => {
+        const { data } = res
+        const { registeredEvents, user } = data
+
+        setUserName('Leandro Felix')
+        setEvents(registeredEvents)
+      })
+      .catch((err) => {
+        console.error(err)
+        showToast({
+          type: 'error',
+          text1: 'Ocorreu um erro.',
+          text2: 'Aliens raptaram seus dados!! 🛸⚠️',
+        })
+      })
+  }, [])
+
   return (
     <View className="flex-1 bg-black">
       <LinearGradient
@@ -15,18 +41,18 @@ export function Profile() {
           <View className="flex-row justify-center">
             <Image
               className="h-40 w-40 rounded-full"
-              source="https://avatars.githubusercontent.com/u/58048297?s=400&u=388b43932a7a4d8f368cfba39719ca64e3d538b5&v=4"
-              contentFit="cover"
-              transition={300}
+              source={{
+                uri: 'https://avatars.githubusercontent.com/u/58048297?s=400&u=388b43932a7a4d8f368cfba39719ca64e3d538b5&v=4',
+              }}
             />
           </View>
           <View className="flex-row items-center justify-center">
             <View className="flex-col justify-center">
               <Text className="mt-4 text-center text-3xl font-extrabold text-white">
-                Leandro Felix
+                {userName}
               </Text>
-              <Text className="text-center text-lg text-gray100">
-                Inscrito em 3 eventos
+              <Text className="text-gray-100 text-center text-lg">
+                Inscrito em X eventos
               </Text>
             </View>
           </View>
@@ -38,19 +64,15 @@ export function Profile() {
         <Text className="text-xl font-bold text-white">Meus Ingressos</Text>
       </View>
       <ScrollView className="mx-8 mt-4">
-        <Card
-          name="E.N.A.T.I. IFCE Cedro"
-          date="26 de abril de 2023"
-          location="Cedro/CE"
-          imageUrl="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"
-        />
-
-        <Card
-          name="FliSol 2023.1"
-          date="14 de abril de 2023"
-          location="Cedro/CE"
-          imageUrl="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-        />
+        {events.map((event) => (
+          <Card
+            key={event.id}
+            name={event.name}
+            date={event.date}
+            location={event.location}
+            imageUrl={event.coverUrl}
+          />
+        ))}
       </ScrollView>
     </View>
   )

@@ -14,15 +14,16 @@ import { useEffect, useState } from 'react'
 
 import ProgressBar from '../../components/ProgressBar'
 import { showToast } from '../../../utils/showToast'
+import { login } from '../../../data/login'
 
 export function EventInfoScreen() {
   const { navigate } = useNavigation()
   const route = useRoute()
   const { eventId } = route.params
 
-  const [name, setName] = useState('Nome')
-  const [description, setDescription] = useState('descrição...')
-  const [location, setLocation] = useState('')
+  const [name, setName] = useState('carregando...')
+  const [description, setDescription] = useState('carregando...')
+  const [location, setLocation] = useState('carregando...')
   const [coverUrl, setCoverUrl] = useState(
     'https://firebasestorage.googleapis.com/v0/b/imhere-firebase.appspot.com/o/1689118036677.png?alt=media&token=64f82e2a-2b90-40bf-b640-b7f7d8f26a3e',
   )
@@ -38,15 +39,15 @@ export function EventInfoScreen() {
   function handleSubmitRegistration() {
     const registrationData = {
       idEvent: eventId,
-      idUser: '9444b8c0-a385-4e1c-a95a-124e787f250b',
+      idUser: login.id,
     }
     http
       .post('/registration', registrationData)
       .then((res) => {
         showToast({
           type: 'success',
-          text1: 'Inscrição realizada com sucesso!',
-          text2: 'Uhul! Nos vemos lá! 👋',
+          text1: 'Inscrição realizada!',
+          text2: 'Uhul! Mais um humano recrutado! 👽👋',
         })
       })
       .catch((err) => {
@@ -54,7 +55,7 @@ export function EventInfoScreen() {
         showToast({
           type: 'error',
           text1: 'Ocorreu um erro.',
-          text2: 'Aliens raptaram a minha conexão!! 🛸🚫',
+          text2: 'Malditos Aliens!! 🛸🚫',
         })
       })
     setTimeout(() => {

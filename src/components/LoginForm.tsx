@@ -36,7 +36,7 @@ export function LoginForm() {
         onPress={() => {
           showToast({
             type: 'success',
-            text1: 'Login realizado!',
+            text1: '✅ Login realizado!',
             text2: 'Chega mais! Bem-vindo à festa! 🥳',
           })
         }}

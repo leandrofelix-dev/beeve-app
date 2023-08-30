@@ -12,7 +12,7 @@ export function showToast({ type, text1, text2 }: IToastProps) {
     text2,
 
     position: 'top',
-    visibilityTime: 4500,
+    visibilityTime: 4000,
     autoHide: true,
     topOffset: 50,
   })

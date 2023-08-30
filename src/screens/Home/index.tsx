@@ -57,9 +57,7 @@ export function Home() {
       <View className="mt-16">
         <View className="flex-row justify-between">
           <View className="mx-4 flex-col justify-between">
-            <Text className="text-4xl font-extrabold text-white">
-              Logo aqui
-            </Text>
+            <Text className="text-4xl font-extrabold text-white">Beeve 🥳</Text>
             <Text className="text-lg text-gray100">{`Bem vindo(a) de volta!`}</Text>
           </View>
 

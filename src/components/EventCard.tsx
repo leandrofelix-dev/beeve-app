@@ -16,12 +16,12 @@ export function Card({ name, date, location, imageUrl }: ICardProps) {
           <View className="flex-1 items-end bg-black opacity-75"></View>
           <View className="absolute p-4">
             <Text className="my-1 text-xl font-bold text-white drop-shadow-md">
-              {name}
+              {`${name}`}
             </Text>
             <Text className="text-md text-gray100">{date}</Text>
             <View className="my-1 flex-row items-center">
               <Ionicons name="compass-sharp" size={12} color="#6B6B6B" />
-              <Text className="text-md text-gray100">{location}</Text>
+              <Text className="text-md text-gray100">{`${location}`}</Text>
             </View>
           </View>
         </View>
