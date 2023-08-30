@@ -2,7 +2,7 @@ import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
 import Checkbox from 'expo-checkbox'
-import { showToastConfirmation } from '../../utils/toastConfirmation'
+import { showToast } from '../../utils/showToast'
 
 export function LoginForm() {
   const [isChecked, setChecked] = useState(false)
@@ -34,7 +34,11 @@ export function LoginForm() {
         className="mt-2 flex-row items-center justify-center rounded-md bg-blue py-4"
         activeOpacity={0.7}
         onPress={() => {
-          showToastConfirmation()
+          showToast({
+            type: 'success',
+            text1: 'Login realizado!',
+            text2: 'Chega mais! Bem-vindo à festa! 🥳',
+          })
         }}
       >
         <Ionicons name="person" size={20} color="#fff" />
@@ -47,7 +51,11 @@ export function LoginForm() {
         className="flex-row items-center justify-center rounded-md border-2 border-blue py-4"
         activeOpacity={0.7}
         onPress={() => {
-          showToastConfirmation()
+          showToast({
+            type: 'success',
+            text1: 'Sucesso',
+            text2: 'Cadastro realizado com sucesso',
+          })
         }}
       >
         <Ionicons name="person-add" size={20} color="#fff" />

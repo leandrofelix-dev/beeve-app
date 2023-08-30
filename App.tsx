@@ -3,9 +3,9 @@ import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from '@expo-google-fonts/inter'
 import { View } from 'react-native'
 import { useCallback } from 'react'
-import { toastConfig } from './utils/toastConfig'
 import Toast from 'react-native-toast-message'
 import Routes from './src/routes'
+import { toastConfig } from './src/config/toastConfig'
 
 SplashScreen.preventAutoHideAsync()
 

@@ -13,8 +13,7 @@ import { useRoute } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 
 import ProgressBar from '../../components/ProgressBar'
-import { showToastConfirmation } from '../../../utils/toastConfirmation'
-import { Toast } from 'react-native-toast-message/lib/src/Toast'
+import { showToast } from '../../../utils/showToast'
 
 export function EventInfoScreen() {
   const route = useRoute()
@@ -41,13 +40,19 @@ export function EventInfoScreen() {
     http
       .post('/registration', registrationData)
       .then((res) => {
-        console.log(res.data)
-        showToastConfirmation()
+        showToast({
+          type: 'success',
+          text1: 'Inscrição realizada com sucesso!',
+          text2: 'Uhul! Nos vemos lá! 👋',
+        })
       })
       .catch((err) => {
         console.error(err)
-        console.log('Ocorreu um erro ao registrar')
-        showToastConfirmation()
+        showToast({
+          type: 'error',
+          text1: 'Ocorreu um erro.',
+          text2: 'Aliens raptaram a minha conexão!! 🛸🚫',
+        })
       })
   }
   return (
