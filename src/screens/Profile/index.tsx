@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, ScrollView, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
-import { Card } from '../../components/EventCard'
 import { http } from '../../api/axios'
 import { login } from '../../../data/login'
-import { showToast } from '../../../utils/showToast'
+import { Card } from '../../components/atoms/EventCard'
+import { showToast } from '../../utils/showToast'
 
 export function Profile() {
   const [userName, setUserName] = useState('carregando')
@@ -16,7 +16,7 @@ export function Profile() {
       .get(`/auth/user/${login.id}`)
       .then((res) => {
         const { data } = res
-        const { registeredEvents, user } = data
+        const { registeredEvents } = data
 
         setUserName('Leandro Felix')
         setEvents(registeredEvents)

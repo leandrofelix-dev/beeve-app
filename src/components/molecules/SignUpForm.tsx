@@ -3,7 +3,7 @@ import Checkbox from 'expo-checkbox'
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 
-import { http } from '../api/axios'
+import { http } from '../../api/axios'
 
 export function SignUpForm() {
   const [isChecked, setChecked] = useState(false)

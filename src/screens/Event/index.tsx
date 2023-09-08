@@ -12,9 +12,9 @@ import { Ionicons } from '@expo/vector-icons'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 
-import ProgressBar from '../../components/ProgressBar'
-import { showToast } from '../../../utils/showToast'
+import { showToast } from '../../utils/showToast'
 import { login } from '../../../data/login'
+import { ProgressBar } from '../../components/atoms/ProgressBar'
 
 export function EventInfoScreen() {
   const { navigate } = useNavigation()

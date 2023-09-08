@@ -12,10 +12,10 @@ import { StatusBar } from 'expo-status-bar'
 import { Ionicons } from '@expo/vector-icons'
 import React, { useEffect, useState } from 'react'
 
-import { Card } from '../../components/EventCard'
 import { http } from '../../api/axios'
-import { EventsNotFound } from '../../components/EventsNotFound'
 import { useNavigation } from '@react-navigation/native'
+import { EventsNotFound } from '../../components/atoms/EventsNotFound'
+import { Card } from '../../components/atoms/EventCard'
 
 export function Home() {
   const { navigate } = useNavigation()
@@ -109,9 +109,9 @@ export function Home() {
               <TouchableOpacity
                 activeOpacity={0.7}
                 key={event.id}
-                onPress={() =>
-                  navigate('eventInfoScreen', { eventId: event.id })
-                }
+                onPress={() => {
+                  return navigate('eventInfoScreen', { eventId: event.id })
+                }}
               >
                 <Card
                   name={event.name}

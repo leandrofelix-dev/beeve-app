@@ -1,5 +1,5 @@
 import { ScrollView, Text, View } from 'react-native'
-import { LoginForm } from '../../components/LoginForm'
+import { LoginForm } from '../../components/molecules/LoginForm'
 
 export default function Login() {
   return (

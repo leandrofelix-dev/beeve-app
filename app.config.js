@@ -1,6 +1,6 @@
 module.exports = {
   name: 'Beeve',
-  slug: 'beeve',
+  slug: 'imhere',
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
