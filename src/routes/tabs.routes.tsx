@@ -22,7 +22,7 @@ export default function TabRoutes() {
           paddingBottom: 8,
           backgroundColor: '#09090b',
           borderTopColor: 'transparent',
-          paddingHorizontal: 16,
+          paddingHorizontal: 40,
         },
         tabBarLabelStyle: {
           fontSize: 12,
@@ -49,22 +49,6 @@ export default function TabRoutes() {
             <Ionicons name="person-circle-outline" size={size} color={color} />
           ),
           tabBarLabel: 'Perfil',
-          tabBarBadge: undefined, // notificationCounter
-        }}
-      />
-      <Tab.Screen
-        name="login"
-        component={Login}
-        options={{
-          tabBarLabel: 'Login',
-          tabBarBadge: undefined, // notificationCounter
-        }}
-      />
-      <Tab.Screen
-        name="signup"
-        component={SignIn}
-        options={{
-          tabBarLabel: 'Registers',
           tabBarBadge: undefined, // notificationCounter
         }}
       />

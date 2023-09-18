@@ -8,7 +8,7 @@ export declare global {
       eventInfoScreen: undefined
       tabs: undefined
     }
-    interface Evento {
+    export interface Evento {
       eventId: string
     }
   }
