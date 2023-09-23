@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react'
 import { Text, View, ScrollView, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient'
-import { http } from '../../api/axios'
-import { login } from '../../../data/login'
-import { Card } from '../../components/atoms/EventCard'
-import { showToast } from '../../utils/showToast'
+import { http } from '../../../api/axios'
+import { login } from '../../../../data/login'
+import { showToast } from '../../../utils/show-toast'
+import { Card } from '../../atoms/event-card'
 
 export function Profile() {
   const [userName, setUserName] = useState('carregando')

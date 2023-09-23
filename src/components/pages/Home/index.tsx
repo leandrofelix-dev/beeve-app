@@ -9,11 +9,11 @@ import {
 import { StatusBar } from 'expo-status-bar'
 import React, { useEffect, useState } from 'react'
 
-import { http } from '../../api/axios'
+import { http } from '../../../api/axios'
 import { useNavigation } from '@react-navigation/native'
-import { EventsNotFound } from '../../components/atoms/EventsNotFound'
-import { Card } from '../../components/atoms/EventCard'
-import Header from '../../components/molecules/header'
+import Header from '../../molecules/header'
+import { Card } from '../../atoms/event-card'
+import { EventsNotFound } from '../../atoms/events-not-founf'
 
 export function Home() {
   const { navigate } = useNavigation()

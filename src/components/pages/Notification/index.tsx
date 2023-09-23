@@ -1,8 +1,8 @@
 import React from 'react'
 import { ScrollView, Text, View } from 'react-native'
-import { NotificationCard } from '../../components/atoms/NotificationCard'
+import { NotificationCard } from '../../atoms/notification-card'
 
-export function Notification() {
+export function NotificationScreen() {
   return (
     <View className="h-screen flex-1 bg-black px-4 pt-20">
       <View>

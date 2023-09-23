@@ -1,12 +1,13 @@
+import { View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-
-import React from 'react'
-import MainAppNavigator from './main.routes'
+import MainAppNavigator from './stack.routes'
 
 export default function Routes() {
   return (
-    <NavigationContainer>
-      <MainAppNavigator />
-    </NavigationContainer>
+    <View className="bg-black" style={{ flex: 1, backgroundColor: '#000000' }}>
+      <NavigationContainer>
+        <MainAppNavigator />
+      </NavigationContainer>
+    </View>
   )
 }

@@ -6,15 +6,15 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native'
-import { http } from '../../api/axios'
+import { http } from '../../../api/axios'
 import { Ionicons } from '@expo/vector-icons'
 
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 
-import { showToast } from '../../utils/showToast'
-import { login } from '../../../data/login'
-import { ProgressBar } from '../../components/atoms/ProgressBar'
+import { login } from '../../../../data/login'
+import { showToast } from '../../../utils/show-toast'
+import { ProgressBar } from '../../atoms/progress-bar'
 
 export function EventInfoScreen() {
   const { navigate } = useNavigation()

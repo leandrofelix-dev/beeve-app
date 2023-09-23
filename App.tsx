@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from '@expo-google-fonts/inter'
-import { View } from 'react-native'
 import { useCallback } from 'react'
+import { View } from 'react-native'
 import Toast from 'react-native-toast-message'
 import Routes from './src/routes'
-import { toastConfig } from './src/config/toastConfig'
+import { toastConfig } from './src/config/toast.config'
 
 SplashScreen.preventAutoHideAsync()
 
