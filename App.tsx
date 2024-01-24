@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import * as SplashScreen from 'expo-splash-screen'
 import { useFonts } from '@expo-google-fonts/inter'
-import { useCallback } from 'react'
 import { View } from 'react-native'
 import Toast from 'react-native-toast-message'
 import Routes from './src/routes'
 import { toastConfig } from './src/config/toast.config'
+import React, { useCallback } from 'react'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -16,14 +16,10 @@ export default function App() {
   })
 
   const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded) {
-      await SplashScreen.hideAsync()
-    }
+    if (fontsLoaded) await SplashScreen.hideAsync()
   }, [fontsLoaded])
 
-  if (!fontsLoaded) {
-    return null
-  }
+  if (!fontsLoaded) return null
 
   return (
     <>
